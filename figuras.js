@@ -40,6 +40,7 @@ function perimetroCirculo(radio){
     return diametro * Math.PI;
 }
 
+
 function areaCirculo(radio){
     return (radio * radio) * Math.PI;
 }
