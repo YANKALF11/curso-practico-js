@@ -2,7 +2,7 @@
 console.group("Cuadrado");
 
 function perimetroCuadrado(lado){
-return ladoCuadrado*4;
+return lado*4;
 } 
 
 /* console.log("Perimetro Cuadrado: "+perimetroCuadrado+"cm"); */
@@ -13,7 +13,29 @@ function areaCuadrado(lado){
 /* console.log("Area Cuadrado: "+areaCuadrado+"cm^2"); */
 console.groupEnd();
 
-//COD del triangulo
+
+//
+
+function calcularPerimetroCuadrado(){
+   const input = document.getElementById("lado"); 
+   const value = input.value;
+   const perimetro = perimetroCuadrado(value);
+    alert(perimetro);
+}
+
+function calcularAreaCuadrado(){
+    const input = document.getElementById("lado");
+    const value = input.value;
+    const area = areaCuadrado(value);
+    alert(area);
+}
+
+
+
+
+
+
+//COD del triangulo.---------------------------------
 console.group("Triangulos");
 
 function perimetroTriangulo(lado1, lado2, base){
@@ -46,3 +68,5 @@ function areaCirculo(radio){
 }
 
 console.groupEnd();
+
+
