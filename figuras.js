@@ -48,7 +48,39 @@ function areaTriangulo(base, altura){
 }
 /* console.log("Area Triangulo: "+areaTriangulo+"cm^2"); */
 
+//Funcion Triangulo Isosceles
+function alturaTrianguloIso(ladoA, ladoB, ladoBase){
+    if(ladoA != ladoB){
+        console.error("Loas lados a y b no son iguales");
+    }else{
+       const baseMenor = ladoBase / 2;
+       const altura = Math.sqrt(ladoA*ladoA - baseMenor*baseMenor);
+       return altura;
+    }
+    
+}
+
+function alturaTrianguloIsosceles(trianguloGrandeLadoA,
+    trianguloGrandeLadoB, trianguloGrandeLadoBase){
+        if(trianguloGrandeLadoA != trianguloGrandeLadoB){
+            console.error("Los lados a y b no son iguales");
+        }else{
+            const trianguloPequenoLadoB = trianguloGrandeLadoBase / 2;
+            const trianguloPequenoLadoBase = trianguloGrandeLadoA;
+
+            const trianguloPequenoLadoBCuadrado = trianguloPequenoLadoB * trianguloPequenoLadoB;
+            const trianguloPequenoLadoBaseCuadrado = trianguloPequenoLadoBase * trianguloPequenoLadoBase;
+
+            const trianguloPequenoLadoA = Math.sqrt(trianguloPequenoLadoBaseCuadrado - trianguloPequenoLadoBCuadrado);
+
+            const trianguloGrandeAltura = trianguloPequenoLadoA;
+            return trianguloGrandeAltura;
+        }
+    }
+
+
 console.groupEnd();
+
 
 //COD del Circulos
 console.group("Circulos")
