@@ -15,3 +15,10 @@ Curso de platzi
 -Segundo paso: implementar la fórmula en Js
 -Tercer paso: crear funciones
 -Cuarto paso: integrar JS con HTML
+
+## Taller #3: promedio, mediana y moda
+
+-Primer paso: definir las fórmulas
+-Segundo paso: implementar la fórmula en Js
+-Tercer paso: crear funciones
+-Cuarto paso: integrar JS con HTML
