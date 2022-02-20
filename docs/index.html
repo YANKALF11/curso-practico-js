@@ -1,38 +1,368 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | Curso Practico JS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&amp;family=Poppins:wght@400;700&amp;display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --select-border: #777;
+            --select-focus: blue;
+            --select-arrow: var(--select-border);
+
+            --header-color: #090909;
+            --main-color: #FFFFFF;
+            --nav-color: #F6DF1C;
+        }
+
+        body {
+            height: 100vh;
+            width: 100%;
+            background-color: #090909;
+            display: flex;
+            align-items: stretch;
+            font-family: "Open Sans", sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Poppins", sans-serif;
+        }
+
+        h2,
+        h3 {
+            font-size: 2.4rem;
+            line-height: 3.6rem;
+        }
+
+
+        /* INICIO DEL HEADER */
+        .cabezera {
+            width: 100px;
+            /* height: 100%; */
+            background-color: var(--header-color);
+        }
+
+        .cabezera-nav {
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+
+        .user {
+            color: var(--nav-color);
+            text-decoration: none;
+            transform: rotate(-90deg) translate(-80px);
+            
+        }
+        /* Añadiendo la efecto de borde creciente ----------------------*/
+        /* ::after pseudo elemento sirve para agregar cosas despues del elemento */
+        .cabezera-nav .user::after {
+            content: ""; /* No agregamos nada, para que el alto sea minimo */
+            width: 0%;/* Ancho 0 */
+            height: 2px;/* Grosor de linea */
+            display: block;/* contenido pasa a la parte inferior */
+            background-color: var(--nav-color);
+            transition: 300ms;/* tiempo*/
+        }
+        .cabezera-nav .user:hover::after {
+            width: 100%;/* Ancho 100% */
+        }
+        
+        /* 
+        De igual forma el ::before, Agrega cosas antes del elemento
+        .cabezera-nav .user::before {
+            content: "";
+            width: 0%;
+            height: 2px;
+            display: block;
+            background-color: var(--nav-color);
+            transition: 300ms;
+        }
+        .cabezera-nav .user:hover::before {
+            width: 100%;
+        } */
+
+        
+
+        .nav-img {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .img-js-practico {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            margin-bottom: 20px;
+        }
+
+        .img-platzi {
+            width: auto;
+            height: 25px;
+            display: inline-block;
+
+            transform: rotate(-90deg) translate(60px, 0px);
+        }
+
+        /* FIN DEL HEADER */
+
+        .main {
+            height: 100%;
+            width: 100%;
+
+            display: flex;
+        }
+
+        /* INICIO DE SECTION1 */
+
+        .main-section1 {
+            width: 60%;
+            background-color: #FFFFFF;
+            padding: 50px 30px;
+        }
+
+        .main-section1 div h3 {
+            color: #97C93E;
+            text-transform: uppercase;
+        }
+
+        .main-section1 div h1 {
+            color: var(--header-color);
+            font-size: 4.8rem;
+
+        }
+
+        .main-section1 p {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .main-section1 ul {
+            list-style: none;
+            font-size: 1.4rempx;
+            margin-bottom: 30px;
+        }
+
+
+
+        /* FIN DE SECTION1 */
+
+        /* INICIO DE SECTION2 */
+        .main-section2 {
+            width: 40%;
+            height: 100vh;
+        }
+
+        .menu-cart {
+            /* width: 100%; */
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .menu-cart div:nth-child(1){
+            border-top: 5px solid black;
+        }
+        .menu-cart div:nth-child(5){
+            border-bottom: 5px solid black;
+        }
+        .cart {
+            background-color: var(--nav-color);
+            padding: 15px 10px;
+            border-left: 5px solid black;
+            border-bottom: 5px solid black;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            
+        }
+        
+        .cart img {
+            width: 80px;
+            height: 80px;
+            margin-right: 15px;
+        }
+        
+        .menu-cart:hover .cart{
+            background-color: var(--header-color);
+            color: white;
+            
+        }
+        .main-section2 .menu-cart .cart:hover{
+            background-color: var(--nav-color);
+            color: var(--header-color);
+            transform: translateX(-10px);
+            border: 5px solid var(--nav-color);
+            
+           
+        }
+        .main-section2 .menu-cart .cart:hover img {
+            filter: invert(0);/* 0 img mantiene su color */
+        }
+        .main-section2 .menu-cart:hover img{
+            filter: invert(1);/* 1 img invierte su color */
+        }
+        /* FIN DE SECTION2 */
+
+        /* INICIO MEDIAS QUERIES --------------------------------------------*/
+        @media(max-width: 1024px){
+
+        body{
+            flex-direction: column;
+        }
+
+        /* INICIO HEADER */
+        .cabezera {
+            width: 100%;
+            
+        }
+        .cabezera-nav {
+            height: 100px;
+            width: 100%;
+            flex-direction: row-reverse;
+            align-items: center;
+            justify-content: space-around;
+        }
+        .cabezera-nav .user {
+            transform: none;
+            font-size: 2.4rem;
+        }
+        
+        .nav-img .img-platzi {
+            display: none;
+        }
+        .nav-img .img-js-practico {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto;
+        }
+        /* FIN DEL HEADER */
+
+        .main{
+            flex-direction: column;
+        }
+
+        .main-section1{
+            width: 100%;
+        }
+        .main-section2 {
+            width: 100%;
+        }
+
+        .cart {
+            border-left: 0px;
+        }
+
+        }
+        /* FIN DE MEDIAS QUERIES ----------------------------------------------*/
+    </style>
 </head>
 <body>
-    <header>
-    <h1>Talleres de C. P. JS</h1>
-    <p>Esos fueron desarrollados por me :v</p>
-</header>
+    <header class="cabezera">
+        <nav class="cabezera-nav">
+            <a class="user" href="https://www.linkedin.com/in/christopher-h-luna-176a42211/">@HLuna</a>
+            <div class="nav-img">
+                <img class="img-js-practico" src="./img/js-challenge-logo.png" alt="js-practico">
+                <img class="img-platzi" src="./img/platzi.webp" alt="logo-platzi">
+            </div>
+        </nav>
+    </header>
+    <main class="main">
+        <section class="main-section1">
+            <div>
+                <h3>TRABAJO PRÁCTICO - PLATZI</h3>
+                <h1>Curso Práctico de JavaScript</h1>
+            </div>
+            <p>Temas vistos en el curso:</p>
+            <ul>
+                <li>Manipulación del DOM</li>
+                <li>Manipulación de Array</li>
+                <li>Functions</li>
+                <li>HTML y CSS</li>
+                <li>Animaciones y transiciones</li>
+            </ul>
+            <p>Cursos relacionados:</p>
+            <ul>
+                <li>Curso de Fontend- @teffcode</li>
+                <li>Curso Básico de JavaScript - @degranda10</li>
+                <li>Curso Práctico de JavaScript - @juandc</li>
+            </ul>
+            <p>Utilizá talleres para hacer tus calculos</p>
+        </section>
+        <section class="main-section2">
+            <nav class="menu-cart">
+                <div class="cart">
+                    <img src="./img/circle.png" alt="">
+                    <div href="figuras.html">
+                        <header>
+                            <h4>Taller #1</h4>
+                            <h2>Figuras Geometricas</h2>
+                        </header>
+                        <p>Calculo básicos para Cuadrados, Triangulos y Circulos</p>
+                    </div>
+                </div>
+                <div class="cart">
+                    <img src="./img/price.png" alt="">
+                    <div href="descuentos.html">
+                        <header>
+                            <h4>Taller #2</h4>
+                            <h2>Precios y descuentos</h2>
+                        </header>
+                        <p>Calculo básicos para precios, descuentos y cupones de pago.</p>
+                    </div>
+                </div>
+                <div class="cart">
+                    <img src="./img/discount.png" alt="">
+                    <div href="promedio.html">
+                        <header>
+                            <h4>Taller #3</h4>
+                            <h2>Promedios, Moda y Mediana</h2>
+                        </header>
+                        <p>Calculo básicos y avanzados.</p>
+                    </div>
+                </div>
+                <div class="cart">
+                    <img src="./img/dollar.png" alt="">
+                    <div href="salarios.html">
+                        <header>
+                            <h4>Taller #4</h4>
+                            <h2>Analisis Salarial.</h2>
+                        </header>
+                        <p>Calculo básicos para trabajar con Salarios (medianas y top 10%).</p>
+                    </div>
+                </div>
+                
+            </nav>
 
-<section>
-    <nav>
-        <ol>
-            <li>
-                <a href="figuras.html">Taller#1 Figuras</a>
-            </li>
-            <li>
-                <a href="descuentos.html">Taller#2 Descuentos</a>
-            </li>
-            <li>
-                <a href="promedio.html">Taller#3 Promedio</a>
-            </li>
-            <li>
-                <a href="moda.html">Taller#3 Moda</a>
-            </li>
-            <li>
-                <a href="salarios.html">Taller#4 Salarios</a>
-            </li>
-        </ol>
-    </nav>
+        </section>
+    </main>
 
-</section>
 </body>
+
 </html>
